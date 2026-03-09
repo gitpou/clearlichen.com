@@ -1,0 +1,1230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>clearlichen Health — Nourish. Heal. Thrive.</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #f7f2eb;
+  --cream2: #ede5d6;
+  --brown: #2a1f14;
+  --brown2: #3d2e1e;
+  --sage: #7a9e7e;
+  --sage-light: #a8c5ab;
+  --terra: #c4663a;
+  --terra-light: #e8896b;
+  --gold: #c9a84c;
+  --gold-light: #e6c96e;
+  --text: #4a3728;
+  --text-muted: #8a7060;
+  --white: #ffffff;
+  --glass-warm: rgba(247,242,235,0.85);
+  --shadow-warm: rgba(42,31,20,0.12);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--cream);
+  color: var(--brown);
+  font-family: 'DM Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-thumb { background: var(--terra); border-radius: 2px; }
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 500;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 22px 72px;
+  background: transparent;
+  transition: background 0.4s, backdrop-filter 0.4s, padding 0.4s;
+}
+nav.scrolled {
+  background: rgba(247,242,235,0.96);
+  backdrop-filter: blur(20px);
+  padding: 16px 72px;
+  box-shadow: 0 1px 0 rgba(42,31,20,0.08);
+}
+.logo {
+  font-family: 'Syne', sans-serif;
+  font-size: 18px; font-weight: 800;
+  color: var(--brown); text-decoration: none; letter-spacing: -0.02em;
+}
+.logo .accent { color: var(--terra); }
+.nav-links { display: flex; gap: 36px; list-style: none; }
+.nav-links a {
+  font-size: 13px; font-weight: 500; color: var(--text-muted);
+  text-decoration: none; letter-spacing: 0.03em; transition: color 0.3s;
+}
+.nav-links a:hover { color: var(--brown); }
+.nav-cta {
+  font-size: 12px; font-weight: 600; letter-spacing: 0.08em;
+  text-transform: uppercase; color: var(--white);
+  background: var(--terra); padding: 12px 26px;
+  border-radius: 6px; text-decoration: none;
+  transition: background 0.3s, box-shadow 0.3s, transform 0.3s;
+  box-shadow: 0 4px 18px rgba(196,102,58,0.35);
+}
+.nav-cta:hover { background: var(--brown); box-shadow: 0 6px 24px rgba(42,31,20,0.3); transform: translateY(-1px); }
+
+/* HERO */
+.hero {
+  min-height: 100vh;
+  display: grid; grid-template-columns: 1fr 1fr;
+  position: relative; overflow: hidden;
+  padding-top: 90px;
+}
+.hero-left {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 80px 72px 80px 72px;
+  position: relative; z-index: 2;
+  background: var(--cream);
+}
+.hero-right {
+  position: relative; overflow: hidden;
+}
+.hero-right img {
+  width: 100%; height: 100%; object-fit: cover;
+  filter: saturate(1.1) brightness(0.95);
+}
+.hero-right::before {
+  content: '';
+  position: absolute; inset: 0; z-index: 1;
+  background: linear-gradient(to right, var(--cream) 0%, transparent 20%),
+              linear-gradient(to bottom, transparent 60%, rgba(42,31,20,0.4) 100%);
+}
+
+/* organic shape */
+.hero-shape {
+  position: absolute; top: -100px; right: -60px;
+  width: 500px; height: 500px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
+  z-index: 0;
+}
+
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--terra);
+  margin-bottom: 28px;
+}
+.hero-tag::before { content: ''; width: 32px; height: 1px; background: var(--terra); }
+
+.hero-left h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(44px, 5vw, 72px);
+  font-weight: 300; line-height: 1.08;
+  letter-spacing: -0.02em;
+  margin-bottom: 28px;
+  color: var(--brown);
+}
+.hero-left h1 em {
+  font-style: italic; color: var(--terra);
+}
+.hero-left h1 strong {
+  font-weight: 600; color: var(--sage);
+}
+
+.hero-desc {
+  font-size: 16px; line-height: 1.8;
+  color: var(--text-muted); max-width: 460px;
+  margin-bottom: 44px; font-weight: 300;
+}
+.hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 56px; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--white);
+  background: var(--terra); padding: 16px 32px;
+  border-radius: 6px; text-decoration: none;
+  transition: all 0.3s;
+  box-shadow: 0 6px 24px rgba(196,102,58,0.35);
+}
+.btn-primary:hover { background: var(--brown); transform: translateY(-2px); box-shadow: 0 10px 32px rgba(42,31,20,0.25); }
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--brown);
+  background: transparent; padding: 16px 32px;
+  border-radius: 6px; text-decoration: none;
+  border: 1.5px solid var(--brown2);
+  transition: all 0.3s;
+}
+.btn-outline:hover { background: var(--brown); color: var(--cream); }
+
+.hero-chips { display: flex; gap: 10px; flex-wrap: wrap; }
+.chip {
+  display: flex; align-items: center; gap: 7px;
+  background: var(--white); border: 1px solid rgba(42,31,20,0.1);
+  border-radius: 100px; padding: 7px 14px;
+  font-size: 12px; font-weight: 500; color: var(--text);
+  box-shadow: 0 2px 8px var(--shadow-warm);
+}
+.chip-dot { width: 6px; height: 6px; border-radius: 50%; }
+.chip-dot.sage { background: var(--sage); }
+.chip-dot.terra { background: var(--terra); }
+.chip-dot.gold { background: var(--gold); }
+
+/* floating stat cards on hero image */
+.hero-stat-card {
+  position: absolute; z-index: 3;
+  background: var(--glass-warm); backdrop-filter: blur(16px);
+  border: 1px solid rgba(247,242,235,0.6);
+  border-radius: 14px; padding: 16px 22px;
+  box-shadow: 0 8px 32px rgba(42,31,20,0.18);
+}
+.hsc1 { bottom: 100px; left: -60px; animation: floatCard 5s ease-in-out infinite; }
+.hsc2 { top: 120px; right: 32px; animation: floatCard 6s ease-in-out infinite 1.2s; }
+@keyframes floatCard {
+  0%,100%{ transform: translateY(0); }
+  50%{ transform: translateY(-10px); }
+}
+.hsc-num { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 700; color: var(--terra); line-height: 1; }
+.hsc-label { font-size: 11px; color: var(--text-muted); margin-top: 4px; }
+
+/* TRUST STRIP */
+.trust-strip {
+  background: var(--brown);
+  padding: 28px 72px;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 40px; flex-wrap: wrap;
+}
+.trust-item {
+  display: flex; align-items: center; gap: 14px;
+  color: var(--cream2); font-size: 13px; font-weight: 400;
+}
+.trust-icon { font-size: 22px; }
+.trust-item strong { color: var(--gold-light); font-weight: 600; display: block; font-size: 14px; }
+.trust-divider { width: 1px; height: 36px; background: rgba(247,242,235,0.15); }
+
+/* SECTIONS */
+section { padding: 100px 72px; position: relative; }
+.s-label {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--terra);
+  margin-bottom: 16px;
+}
+.s-label::before { content: '—'; opacity: 0.5; }
+h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(32px, 4vw, 54px);
+  font-weight: 300; line-height: 1.12;
+  letter-spacing: -0.02em; color: var(--brown);
+}
+h2 em { font-style: italic; color: var(--terra); }
+h2 strong { font-weight: 600; }
+
+/* SCIENCE SECTION */
+.science-section { background: var(--cream2); }
+.science-intro { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: end; margin-bottom: 64px; }
+.science-desc { font-size: 16px; line-height: 1.8; color: var(--text-muted); font-weight: 300; max-width: 480px; margin-top: 20px; }
+.sci-grid {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 2px; background: rgba(42,31,20,0.08);
+}
+.sci-card {
+  background: var(--cream);
+  padding: 44px 36px;
+  position: relative; overflow: hidden;
+  transition: background 0.35s;
+  cursor: default;
+}
+.sci-card:hover { background: var(--white); }
+.sci-card-line {
+  position: absolute; left: 36px; top: 0; width: 40px; height: 3px;
+  background: var(--terra); transform: scaleX(0); transform-origin: left;
+  transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.sci-card:hover .sci-card-line { transform: scaleX(1); }
+.sci-num { font-size: 10px; font-weight: 600; letter-spacing: 0.2em; color: var(--text-muted); text-transform: uppercase; margin-bottom: 22px; }
+.sci-emoji { font-size: 36px; margin-bottom: 18px; display: block; }
+.sci-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 600;
+  margin-bottom: 10px; color: var(--brown);
+}
+.sci-card p { font-size: 13px; color: var(--text-muted); line-height: 1.75; font-weight: 300; }
+
+/* FOOD AS MEDICINE */
+.food-medicine { background: var(--cream); }
+.fm-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 80px; align-items: center; margin-top: 56px; }
+.fm-right h2 { margin-bottom: 20px; }
+.fm-right p { font-size: 15px; color: var(--text-muted); line-height: 1.85; margin-bottom: 18px; font-weight: 300; }
+.insight-box {
+  background: var(--brown);
+  color: var(--cream); border-radius: 12px;
+  padding: 24px 28px; margin: 28px 0;
+  position: relative; overflow: hidden;
+}
+.insight-box::before {
+  content: ''; position: absolute; top: -40px; right: -40px;
+  width: 120px; height: 120px; border-radius: 50%;
+  background: rgba(201,168,76,0.15);
+}
+.insight-box .ib-tag { font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); margin-bottom: 10px; }
+.insight-box p { font-size: 13px; color: rgba(247,242,235,0.8); line-height: 1.7; margin: 0; }
+
+.fact-list { list-style: none; }
+.fact-list li {
+  display: flex; align-items: flex-start; gap: 14px;
+  font-size: 14px; color: var(--text); padding: 13px 0;
+  border-bottom: 1px solid rgba(42,31,20,0.08);
+  font-weight: 400;
+}
+.fact-list li:last-child { border-bottom: none; }
+.fact-icon {
+  width: 34px; height: 34px; border-radius: 8px;
+  background: rgba(196,102,58,0.1); border: 1px solid rgba(196,102,58,0.2);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; flex-shrink: 0; margin-top: -1px;
+}
+
+/* image collage */
+.fm-left { position: relative; }
+.fm-img-main {
+  width: 100%; height: 520px; object-fit: cover;
+  border-radius: 16px; display: block;
+  filter: saturate(1.15) brightness(0.95);
+}
+.fm-img-sm {
+  position: absolute; bottom: -28px; right: -28px;
+  width: 200px; height: 200px; object-fit: cover;
+  border-radius: 12px; border: 5px solid var(--cream);
+  box-shadow: 0 12px 40px rgba(42,31,20,0.2);
+}
+.fm-badge {
+  position: absolute; top: 28px; left: -24px;
+  background: var(--terra); color: var(--white);
+  border-radius: 12px; padding: 16px 20px;
+  box-shadow: 0 8px 28px rgba(196,102,58,0.4);
+  animation: floatCard 5s ease-in-out infinite;
+}
+.fm-badge-num { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 700; line-height: 1; }
+.fm-badge-txt { font-size: 11px; opacity: 0.85; margin-top: 4px; }
+
+/* SERVICES */
+.services-section { background: var(--brown); }
+.services-section .s-label { color: var(--gold-light); }
+.services-section h2 { color: var(--cream); }
+.services-section h2 em { color: var(--terra-light); }
+.svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 56px; }
+.svc-card {
+  background: var(--brown2); border-radius: 16px;
+  overflow: hidden; transition: transform 0.4s, box-shadow 0.4s;
+  border: 1px solid rgba(247,242,235,0.07);
+  cursor: pointer;
+}
+.svc-card:hover { transform: translateY(-8px); box-shadow: 0 28px 60px rgba(0,0,0,0.35); }
+.svc-img-wrap { height: 200px; overflow: hidden; position: relative; }
+.svc-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s; filter: brightness(0.75) saturate(1.2); }
+.svc-card:hover .svc-img { transform: scale(1.07); }
+.svc-img-overlay { position: absolute; inset: 0; background: linear-gradient(to top, var(--brown2) 0%, transparent 55%); }
+.svc-badge {
+  position: absolute; top: 14px; right: 14px;
+  font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--brown); background: var(--gold-light); padding: 4px 10px; border-radius: 100px;
+}
+.svc-body { padding: 26px 26px 30px; }
+.svc-body h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 22px; font-weight: 600;
+  margin-bottom: 10px; color: var(--cream);
+}
+.svc-body p { font-size: 13px; color: rgba(237,229,214,0.6); line-height: 1.75; font-weight: 300; margin-bottom: 20px; }
+.svc-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+.svc-tag {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.06em;
+  padding: 3px 10px; border-radius: 100px;
+  color: var(--sage-light); background: rgba(122,158,126,0.15);
+  border: 1px solid rgba(122,158,126,0.25);
+}
+.svc-tag.warm { color: var(--terra-light); background: rgba(196,102,58,0.15); border-color: rgba(196,102,58,0.25); }
+.svc-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 11px; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--gold-light);
+  background: none; border: 1px solid rgba(201,168,76,0.3);
+  border-radius: 6px; padding: 9px 18px;
+  cursor: pointer; transition: all 0.3s;
+  font-family: 'DM Sans', sans-serif;
+}
+.svc-link:hover { background: rgba(201,168,76,0.15); border-color: var(--gold); }
+.svc-card::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, var(--terra), var(--gold));
+  transform: scaleX(0); transition: transform 0.4s; transform-origin: left;
+}
+.svc-card { position: relative; }
+.svc-card:hover::after { transform: scaleX(1); }
+
+/* NUTRIENT SECTION */
+.nutrient-section { background: var(--cream2); }
+.nut-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-top: 56px; }
+.nut-visual { position: relative; }
+.nut-img { width: 100%; height: 480px; object-fit: cover; border-radius: 16px; filter: saturate(1.1); }
+.nut-overlay { position: absolute; inset: 0; border-radius: 16px; background: linear-gradient(135deg, rgba(122,158,126,0.15), transparent 60%); }
+.nut-bars { display: flex; flex-direction: column; gap: 22px; }
+.nut-bar-head { display: flex; justify-content: space-between; margin-bottom: 8px; }
+.nut-bar-title { font-size: 14px; font-weight: 500; color: var(--brown); }
+.nut-bar-pct { font-size: 13px; color: var(--text-muted); }
+.nut-track { height: 7px; background: rgba(42,31,20,0.1); border-radius: 100px; overflow: hidden; }
+.nut-fill { height: 100%; border-radius: 100px; transition: width 1.6s cubic-bezier(0.25, 0.8, 0.25, 1); width: 0; }
+.nut-fill.t { background: linear-gradient(90deg, var(--terra), var(--terra-light)); }
+.nut-fill.s { background: linear-gradient(90deg, var(--sage), var(--sage-light)); }
+.nut-fill.g { background: linear-gradient(90deg, var(--gold), var(--gold-light)); }
+.nut-fill.b { background: linear-gradient(90deg, #6b7fa8, #8ea3c8); }
+.nut-note { font-size: 11px; color: var(--text-muted); margin-top: 6px; }
+.nut-bottom { margin-top: 40px; padding-top: 32px; border-top: 1px solid rgba(42,31,20,0.1); display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.nb-num { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 700; color: var(--terra); line-height: 1; }
+.nb-label { font-size: 12px; color: var(--text-muted); margin-top: 5px; }
+
+/* TESTIMONIALS */
+.testi-section { background: var(--white); }
+.testi-intro { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 56px; }
+.testi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+.testi-card {
+  background: var(--cream); border-radius: 16px;
+  padding: 36px; border: 1px solid rgba(42,31,20,0.07);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+.testi-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(42,31,20,0.1); }
+.testi-stars { color: var(--gold); font-size: 14px; letter-spacing: 2px; margin-bottom: 18px; }
+.testi-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 65px; color: rgba(196,102,58,0.08);
+  line-height: 0.7; position: absolute; top: 28px; right: 28px;
+  font-weight: 300;
+}
+.testi-card p {
+  font-size: 15px; color: var(--text); line-height: 1.8;
+  font-weight: 300; font-style: italic; margin-bottom: 28px;
+}
+.testi-foot { display: flex; align-items: center; gap: 14px; }
+.t-av {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: linear-gradient(135deg, var(--terra), var(--gold));
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700;
+  color: var(--white); flex-shrink: 0;
+}
+.t-name { font-weight: 600; font-size: 14px; color: var(--brown); }
+.t-role { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+/* APPOINTMENT */
+.appt-section { background: var(--cream); }
+.appt-layout { display: grid; grid-template-columns: 1fr 1.1fr; gap: 80px; margin-top: 56px; align-items: start; }
+.appt-left h2 { margin-bottom: 18px; }
+.appt-left > p { font-size: 15px; color: var(--text-muted); line-height: 1.8; font-weight: 300; margin-bottom: 44px; }
+.contact-block { margin-bottom: 28px; }
+.cb-icon { font-size: 22px; margin-bottom: 8px; }
+.cb-label { font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--terra); margin-bottom: 4px; }
+.cb-val { font-size: 14px; color: var(--brown); font-weight: 500; }
+.cb-val a { color: var(--brown); text-decoration: none; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+
+.form-box {
+  background: var(--white); border-radius: 20px;
+  padding: 48px; box-shadow: 0 12px 60px rgba(42,31,20,0.1);
+  border: 1px solid rgba(42,31,20,0.06);
+}
+.form-box h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 28px; font-weight: 600; margin-bottom: 8px; color: var(--brown);
+}
+.form-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 36px; font-weight: 300; }
+.f-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+.f-grp { margin-bottom: 16px; }
+label {
+  display: block; font-size: 10px; font-weight: 700;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--text-muted); margin-bottom: 8px;
+}
+input, select, textarea {
+  width: 100%; background: var(--cream);
+  border: 1.5px solid rgba(42,31,20,0.12);
+  border-radius: 8px; padding: 13px 16px;
+  color: var(--brown); font-family: 'DM Sans', sans-serif;
+  font-size: 14px; outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  font-weight: 300;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--terra);
+  box-shadow: 0 0 0 3px rgba(196,102,58,0.12);
+  background: var(--white);
+}
+select option { background: var(--white); }
+textarea { resize: vertical; min-height: 90px; }
+input::placeholder, textarea::placeholder { color: rgba(90,70,55,0.35); }
+.btn-submit {
+  width: 100%; padding: 16px;
+  background: var(--terra);
+  color: var(--white); font-family: 'Syne', sans-serif;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.08em;
+  border: none; border-radius: 8px; cursor: pointer;
+  transition: all 0.3s; margin-top: 8px; text-transform: uppercase;
+  box-shadow: 0 6px 24px rgba(196,102,58,0.35);
+}
+.btn-submit:hover { background: var(--brown); box-shadow: 0 10px 32px rgba(42,31,20,0.25); transform: translateY(-1px); }
+
+/* SUCCESS */
+.form-success {
+  display: none; text-align: center; padding: 40px 20px;
+}
+.success-icon { font-size: 48px; margin-bottom: 16px; }
+.form-success h4 { font-family: 'Cormorant Garamond', serif; font-size: 24px; font-weight: 600; color: var(--brown); margin-bottom: 10px; }
+.form-success p { font-size: 14px; color: var(--text-muted); }
+
+/* FOOTER */
+footer {
+  background: var(--brown);
+  padding: 72px 72px 40px;
+}
+.footer-top {
+  display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 56px; margin-bottom: 60px;
+}
+.footer-brand .logo { color: var(--cream); display: block; margin-bottom: 16px; }
+.footer-brand p { font-size: 13px; color: rgba(237,229,214,0.55); line-height: 1.75; font-weight: 300; max-width: 280px; }
+.footer-col h4 {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--gold-light); margin-bottom: 20px;
+}
+.footer-col a {
+  display: block; font-size: 13px; color: rgba(237,229,214,0.55);
+  text-decoration: none; margin-bottom: 12px; transition: color 0.3s; font-weight: 300;
+}
+.footer-col a:hover { color: var(--cream); }
+.footer-bottom {
+  padding-top: 28px; border-top: 1px solid rgba(247,242,235,0.1);
+  display: flex; justify-content: space-between; align-items: center;
+}
+.footer-bottom p { font-size: 12px; color: rgba(237,229,214,0.35); font-weight: 300; }
+
+/* MODALS */
+.modal-overlay {
+  position: fixed; inset: 0; z-index: 900;
+  background: rgba(42,31,20,0.7); backdrop-filter: blur(8px);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.35s;
+  padding: 24px;
+}
+.modal-overlay.open { opacity: 1; pointer-events: all; }
+.modal {
+  background: var(--white); border-radius: 20px;
+  max-width: 720px; width: 100%; max-height: 85vh; overflow-y: auto;
+  transform: translateY(20px) scale(0.98);
+  transition: transform 0.35s;
+  position: relative;
+}
+.modal-overlay.open .modal { transform: translateY(0) scale(1); }
+.modal-header-img { width: 100%; height: 240px; object-fit: cover; border-radius: 20px 20px 0 0; filter: brightness(0.8) saturate(1.1); display: block; }
+.modal-header-overlay { position: absolute; top: 0; left: 0; right: 0; height: 240px; border-radius: 20px 20px 0 0; background: linear-gradient(to bottom, rgba(42,31,20,0.3), transparent); }
+.modal-tag { position: absolute; top: 24px; left: 24px; background: var(--terra); color: var(--white); font-size: 9px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; padding: 5px 12px; border-radius: 100px; }
+.modal-close-btn { position: absolute; top: 20px; right: 20px; width: 36px; height: 36px; border-radius: 50%; background: rgba(42,31,20,0.6); border: none; color: var(--white); font-size: 14px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.3s; }
+.modal-close-btn:hover { background: var(--brown); }
+.modal-body-inner { padding: 36px 40px 40px; }
+.modal-body-inner h2 { font-family: 'Cormorant Garamond', serif; font-size: 30px; font-weight: 600; color: var(--brown); margin-bottom: 8px; }
+.modal-subtitle { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; color: var(--terra); text-transform: uppercase; margin-bottom: 20px; }
+.modal-body-inner > p { font-size: 14px; color: var(--text-muted); line-height: 1.8; margin-bottom: 24px; font-weight: 300; }
+.modal-sci-box { background: var(--cream); border-left: 3px solid var(--terra); border-radius: 0 10px 10px 0; padding: 18px 22px; margin-bottom: 24px; }
+.modal-sci-box h4 { font-size: 14px; font-weight: 600; color: var(--brown); margin-bottom: 8px; }
+.modal-sci-box p { font-size: 13px; color: var(--text-muted); line-height: 1.7; font-weight: 300; }
+.modal-pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.m-pill { font-size: 11px; font-weight: 600; padding: 5px 13px; border-radius: 100px; }
+.m-pill.green { color: var(--sage); background: rgba(122,158,126,0.12); border: 1px solid rgba(122,158,126,0.3); }
+.m-pill.warm { color: var(--terra); background: rgba(196,102,58,0.1); border: 1px solid rgba(196,102,58,0.25); }
+.m-pill.gold { color: #a07820; background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.3); }
+.modal-divider { height: 1px; background: rgba(42,31,20,0.1); margin: 24px 0; }
+.modal-food-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 24px; }
+.m-food-card { background: var(--cream); border: 1px solid rgba(42,31,20,0.08); border-radius: 10px; padding: 16px 18px; }
+.m-food-card h5 { font-size: 13px; font-weight: 600; color: var(--brown); margin-bottom: 6px; }
+.m-food-card p { font-size: 12px; color: var(--text-muted); line-height: 1.65; font-weight: 300; }
+.modal-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 28px; }
+.m-stat-box { text-align: center; padding: 20px 14px; background: var(--cream); border-radius: 10px; }
+.m-stat-num { font-family: 'Syne', sans-serif; font-size: 26px; font-weight: 700; color: var(--terra); line-height: 1; margin-bottom: 6px; }
+.m-stat-lbl { font-size: 11px; color: var(--text-muted); line-height: 1.5; }
+
+/* REVEAL ANIMATIONS */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.rv1 { transition-delay: 0.12s; }
+.reveal.rv2 { transition-delay: 0.22s; }
+.reveal.rv3 { transition-delay: 0.32s; }
+.reveal.rv4 { transition-delay: 0.42s; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* MOBILE */
+@media (max-width: 900px) {
+  nav { padding: 18px 28px; }
+  nav.scrolled { padding: 14px 28px; }
+  .nav-links { display: none; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-right { height: 320px; }
+  .hero-left { padding: 40px 28px; }
+  section { padding: 72px 28px; }
+  .trust-strip { padding: 24px 28px; gap: 20px; }
+  .trust-divider { display: none; }
+  .science-intro, .fm-grid, .nut-layout, .appt-layout { grid-template-columns: 1fr; gap: 40px; }
+  .sci-grid, .svc-grid, .testi-grid { grid-template-columns: 1fr; }
+  .footer-top { grid-template-columns: 1fr 1fr; }
+  .modal-food-grid, .modal-stats { grid-template-columns: 1fr; }
+  .f-row { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR DIV removed for natural cursor -->
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="logo">clear<span class="accent">lichen</span></a>
+  <ul class="nav-links">
+    <li><a href="#science">Science</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#nutrition">Nutrition</a></li>
+    <li><a href="#stories">Stories</a></li>
+    <li><a href="#appointment">Contact</a></li>
+  </ul>
+  <a href="#appointment" class="nav-cta">Book Now</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-shape"></div>
+  <div class="hero-left">
+    <div class="hero-tag reveal">Evidence-Based Nutritional Medicine</div>
+    <h1 class="reveal rv1">
+      Where <em>Food</em><br>
+      Becomes Your<br>
+      <strong>Greatest Medicine</strong>
+    </h1>
+    <p class="hero-desc reveal rv2">
+      We combine cutting-edge nutritional biochemistry with integrative medicine to address the root causes of disease — not just the symptoms. Your plate is your most powerful prescription.
+    </p>
+    <div class="hero-ctas reveal rv3">
+      <a href="#appointment" class="btn-primary">Book Consultation →</a>
+      <a href="#science" class="btn-outline">Our Approach</a>
+    </div>
+    <div class="hero-chips reveal rv4">
+      <div class="chip"><span class="chip-dot sage"></span>Anti-Inflammatory Protocols</div>
+      <div class="chip"><span class="chip-dot terra"></span>Metabolic Reset</div>
+      <div class="chip"><span class="chip-dot gold"></span>Gut Microbiome Care</div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=900&h=900&fit=crop&auto=format&q=85" alt="Healthy vibrant food">
+    <div class="hero-stat-card hsc1">
+      <div class="hsc-num">8,500+</div>
+      <div class="hsc-label">Patients Transformed</div>
+    </div>
+    <div class="hero-stat-card hsc2">
+      <div class="hsc-num">12 yrs</div>
+      <div class="hsc-label">Clinical Excellence</div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+  <div class="trust-item">
+    <span class="trust-icon">🏥</span>
+    <div><strong>Hospital-Grade Diagnostics</strong>Functional lab testing & biomarkers</div>
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-item">
+    <span class="trust-icon">👩‍⚕️</span>
+    <div><strong>Integrative Specialists</strong>MDs, dietitians & health coaches</div>
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-item">
+    <span class="trust-icon">🧬</span>
+    <div><strong>Personalized Protocols</strong>AI-assisted metabolic profiling</div>
+  </div>
+  <div class="trust-divider"></div>
+  <div class="trust-item">
+    <span class="trust-icon">📋</span>
+    <div><strong>Evidence-Based</strong>Peer-reviewed nutritional science</div>
+  </div>
+</div>
+
+<!-- SCIENCE SECTION -->
+<section class="science-section" id="science">
+  <div class="science-intro">
+    <div>
+      <div class="s-label reveal">The Science Behind Us</div>
+      <h2 class="reveal rv1">Why Food Is<br>Your <em>Most Powerful</em><br>Medicine</h2>
+    </div>
+    <p class="science-desc reveal rv2">Every nutrient triggers a cascade of biochemical reactions. From gene expression to hormone regulation — what you eat shapes every cell, tissue, and organ in your body.</p>
+  </div>
+  <div class="sci-grid">
+    <div class="sci-card reveal">
+      <div class="sci-card-line"></div>
+      <div class="sci-num">01 ——</div>
+      <span class="sci-emoji">🧬</span>
+      <h3>Precision Nutrigenomics</h3>
+      <p>AI-assisted biomarker analysis maps your unique metabolic fingerprint, enabling hyper-personalized nutrition plans tailored to your genetics and lifestyle.</p>
+    </div>
+    <div class="sci-card reveal rv1">
+      <div class="sci-card-line"></div>
+      <div class="sci-num">02 ——</div>
+      <span class="sci-emoji">🥗</span>
+      <h3>Nutritional Medicine</h3>
+      <p>Phytonutrients, polyphenols, and micronutrients modulate inflammation at the cellular level. Your plate is your most powerful prescription.</p>
+    </div>
+    <div class="sci-card reveal rv2">
+      <div class="sci-card-line"></div>
+      <div class="sci-num">03 ——</div>
+      <span class="sci-emoji">⚗️</span>
+      <h3>Precision Diagnostics</h3>
+      <p>Hospital-grade equipment paired with functional lab testing reveals nutrient deficiencies, hormonal imbalances, and gut dysbiosis with clinical accuracy.</p>
+    </div>
+    <div class="sci-card reveal rv3">
+      <div class="sci-card-line"></div>
+      <div class="sci-num">04 ——</div>
+      <span class="sci-emoji">🤝</span>
+      <h3>Collaborative Care</h3>
+      <p>MDs, registered dietitians, and integrative health coaches collaborate on holistic care plans that address root causes — not just symptoms.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOD AS MEDICINE -->
+<section class="food-medicine" id="food-health">
+  <div class="fm-grid">
+    <div class="fm-left reveal">
+      <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=700&h=600&fit=crop&auto=format&q=85" alt="Colorful nutritious food" class="fm-img-main">
+      <img src="https://images.unsplash.com/photo-1490885578174-acda8905c2c6?w=300&h=300&fit=crop&auto=format&q=85" alt="Healthy bowl" class="fm-img-sm">
+      <div class="fm-badge">
+        <div class="fm-badge-num">30%</div>
+        <div class="fm-badge-txt">Inflammation reduction via food</div>
+      </div>
+    </div>
+    <div class="fm-right">
+      <div class="s-label reveal">Food as Medicine</div>
+      <h2 class="reveal rv1">Your Body Runs on <em>Chemistry</em></h2>
+      <p class="reveal rv2" style="margin-top: 18px;">The human body is a living chemistry lab. Every bite of food triggers thousands of biochemical reactions — modulating inflammation, neurotransmitter synthesis, hormone production, and immune function.</p>
+      <p class="reveal rv2">At clearlichen, we don't just treat disease after it appears. We leverage nutritional biochemistry to prevent, reverse, and optimize health from the inside out.</p>
+      <div class="insight-box reveal rv3">
+        <div class="ib-tag">🔬 Clinical Finding</div>
+        <p>A Mediterranean diet rich in polyphenols reduces systemic inflammation markers (IL-6, TNF-α) by 20–30%, rivaling the effect of low-dose anti-inflammatory medications — without the side effects.</p>
+      </div>
+      <ul class="fact-list reveal rv3">
+        <li><span class="fact-icon">🫀</span>Curcumin inhibits NF-κB, the master inflammation switch in cells</li>
+        <li><span class="fact-icon">🧠</span>Omega-3 DHA constitutes 97% of the brain's total fatty acid content</li>
+        <li><span class="fact-icon">🦠</span>Gut microbiome contains 38 trillion bacteria that regulate your immunity</li>
+        <li><span class="fact-icon">⚡</span>Magnesium participates in over 300 enzymatic reactions every single day</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section class="services-section" id="services">
+  <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:24px;">
+    <div>
+      <div class="s-label reveal">What We Treat</div>
+      <h2 class="reveal rv1">Specialized <em>Care</em><br>for Every Need</h2>
+    </div>
+    <a href="#appointment" class="btn-outline reveal rv1" style="color:var(--cream);border-color:rgba(247,242,235,0.3);">View All Services →</a>
+  </div>
+  <div class="svc-grid">
+    <div class="svc-card reveal" onclick="openModal('gut')">
+      <div class="svc-img-wrap">
+        <img src="https://images.unsplash.com/photo-1509909756405-be0199881695?w=600&h=250&fit=crop&auto=format&q=80" alt="Gut Health" class="svc-img">
+        <div class="svc-img-overlay"></div>
+        <div class="svc-badge">Most Popular</div>
+      </div>
+      <div class="svc-body">
+        <h3>Gut & Microbiome Health</h3>
+        <p>Comprehensive microbiome analysis and targeted nutritional protocols to restore gut integrity, reduce inflammation, and rebuild immune resilience.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Microbiome Test</span>
+          <span class="svc-tag">Gut Permeability</span>
+          <span class="svc-tag warm">Leaky Gut</span>
+        </div>
+        <button class="svc-link">Learn More →</button>
+      </div>
+    </div>
+    <div class="svc-card reveal rv1" onclick="openModal('weight')">
+      <div class="svc-img-wrap">
+        <img src="https://c02.purpledshub.com/uploads/sites/41/2024/05/Time-restricted-eating-high-intensity-exercise.jpg" alt="Metabolic Health" class="svc-img">
+        <div class="svc-img-overlay"></div>
+        <div class="svc-badge">High Impact</div>
+      </div>
+      <div class="svc-body">
+        <h3>Metabolic Reset</h3>
+        <p>Science-backed weight management addressing insulin resistance, hormonal imbalances, and metabolic dysfunction at the root biochemical level.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Insulin Panel</span>
+          <span class="svc-tag warm">Metabolic Rate</span>
+          <span class="svc-tag">Hormone Balance</span>
+        </div>
+        <button class="svc-link">Learn More →</button>
+      </div>
+    </div>
+    <div class="svc-card reveal rv2" onclick="openModal('wellness')">
+      <div class="svc-img-wrap">
+        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&h=250&fit=crop&auto=format&q=80" alt="Wellness" class="svc-img">
+        <div class="svc-img-overlay"></div>
+        <div class="svc-badge">Integrative</div>
+      </div>
+      <div class="svc-body">
+        <h3>Stress & Wellness</h3>
+        <p>HPA axis optimization, adaptogenic protocols, and nutritional psychiatry to restore cortisol balance, improve sleep, and enhance resilience.</p>
+        <div class="svc-tags">
+          <span class="svc-tag">Cortisol Testing</span>
+          <span class="svc-tag">Adaptogens</span>
+          <span class="svc-tag warm">Sleep Architecture</span>
+        </div>
+        <button class="svc-link">Learn More →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NUTRIENT SECTION -->
+<section class="nutrient-section" id="nutrition">
+  <div class="nut-layout">
+    <div class="nut-visual reveal">
+      <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=700&h=560&fit=crop&auto=format&q=85" alt="Nutrition science" class="nut-img">
+      <div class="nut-overlay"></div>
+    </div>
+    <div>
+      <div class="s-label reveal">Nutritional Science</div>
+      <h2 class="reveal rv1">Understanding Your <em>Nutrient</em> Blueprint</h2>
+      <p class="reveal rv2" style="font-size:15px;color:var(--text-muted);line-height:1.8;font-weight:300;margin:18px 0 36px;">We analyze 50+ biomarkers to create a comprehensive picture of your nutritional status — then build a protocol to close the gaps.</p>
+
+      <div class="nut-bars reveal rv2">
+        <div>
+          <div class="nut-bar-head">
+            <span class="nut-bar-title">Omega-3 Fatty Acids (EPA+DHA)</span>
+            <span class="nut-bar-pct">Reduces inflammation by 35%</span>
+          </div>
+          <div class="nut-track"><div class="nut-fill t" data-w="85%" style="width:0"></div></div>
+          <div class="nut-note">Critical for cardiovascular, brain & joint health</div>
+        </div>
+        <div>
+          <div class="nut-bar-head">
+            <span class="nut-bar-title">Polyphenols (Plant Compounds)</span>
+            <span class="nut-bar-pct">12,000+ types identified</span>
+          </div>
+          <div class="nut-track"><div class="nut-fill s" data-w="72%" style="width:0"></div></div>
+          <div class="nut-note">Modulate gut microbiome & reduce oxidative stress</div>
+        </div>
+        <div>
+          <div class="nut-bar-head">
+            <span class="nut-bar-title">Vitamin D3 + K2 Complex</span>
+            <span class="nut-bar-pct">80% of patients deficient</span>
+          </div>
+          <div class="nut-track"><div class="nut-fill g" data-w="60%" style="width:0"></div></div>
+          <div class="nut-note">Immune regulation, bone metabolism & mood</div>
+        </div>
+        <div>
+          <div class="nut-bar-head">
+            <span class="nut-bar-title">Magnesium (Elemental)</span>
+            <span class="nut-bar-pct">300+ enzymatic roles</span>
+          </div>
+          <div class="nut-track"><div class="nut-fill b" data-w="78%" style="width:0"></div></div>
+          <div class="nut-note">Energy production, sleep quality & stress response</div>
+        </div>
+      </div>
+
+      <div class="nut-bottom reveal rv3">
+        <div>
+          <div class="nb-num" data-count="8500">0+</div>
+          <div class="nb-label">Patients treated</div>
+        </div>
+        <div>
+          <div class="nb-num" data-count="97">0%</div>
+          <div class="nb-label">Satisfaction rate</div>
+        </div>
+        <div>
+          <div class="nb-num" data-count="6">0+</div>
+          <div class="nb-label">Specializations</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testi-section" id="stories">
+  <div class="testi-intro">
+    <div>
+      <div class="s-label reveal">Patient Stories</div>
+      <h2 class="reveal rv1">Real Results,<br><em>Real People</em></h2>
+    </div>
+    <p class="reveal rv2" style="font-size:14px;color:var(--text-muted);max-width:300px;text-align:right;font-weight:300;line-height:1.7;">Over 8,500 patients have transformed their health through our evidence-based nutritional medicine approach.</p>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="testi-quote">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p>After years of struggling with IBS, clearlichen identified my gut dysbiosis and designed a personalized protocol. Within three months, my symptoms had completely resolved. Life-changing doesn't cover it.</p>
+      <div class="testi-foot">
+        <div class="t-av">SR</div>
+        <div>
+          <div class="t-name">Sunita Rao</div>
+          <div class="t-role">IBS & Gut Health · 8 months ago</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal rv1">
+      <div class="testi-quote">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p>My metabolic reset journey with clearlichen was unlike anything I'd experienced. They addressed my insulin resistance through food science — I lost 18kg and reversed my pre-diabetes in 5 months.</p>
+      <div class="testi-foot">
+        <div class="t-av" style="background:linear-gradient(135deg,var(--sage),var(--gold))">AM</div>
+        <div>
+          <div class="t-name">Amir Malhotra</div>
+          <div class="t-role">Metabolic Reset · 5 months ago</div>
+        </div>
+      </div>
+    </div>
+    <div class="testi-card reveal rv2">
+      <div class="testi-quote">"</div>
+      <div class="testi-stars">★★★★★</div>
+      <p>The cortisol testing and adaptogenic protocol they prescribed transformed my sleep and anxiety. Understanding the cortisol-nutrition feedback loop was the missing piece I'd searched for for years.</p>
+      <div class="testi-foot">
+        <div class="t-av" style="background:linear-gradient(135deg,#6b7fa8,var(--sage-light))">PK</div>
+        <div>
+          <div class="t-name">Priya Kapoor</div>
+          <div class="t-role">Stress & Wellness · 3 months ago</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPOINTMENT -->
+<section class="appt-section" id="appointment">
+  <div class="appt-layout">
+    <div class="appt-left">
+      <div class="s-label reveal">Get in Touch</div>
+      <h2 class="reveal rv1">Start Your <em>Healing</em><br>Journey Today</h2>
+      <p class="reveal rv2">Book a consultation with our specialist team. We'll review your history, run comprehensive functional labs, and build a personalized nutritional medicine protocol just for you.</p>
+      <div class="contact-grid reveal rv3">
+        <div class="contact-block">
+          <div class="cb-icon">📍</div>
+          <div class="cb-label">Location</div>
+          <div class="cb-val"><br>350 Fifth Avenue, Suite 7800<br>New York, NY 10118, USA</div>
+        </div>
+        <div class="contact-block">
+          <div class="cb-icon">📞</div>
+          <div class="cb-label">Phone</div>
+          <div class="cb-val"><a href="tel:+912012345678">+1 (800) 927-3940</a></div>
+        </div>
+        <div class="contact-block">
+          <div class="cb-icon">📧</div>
+          <div class="cb-label">Email</div>
+          <div class="cb-val"><a href="mailto:hello@clearlichen.in">hello@clearlichen.com</a></div>
+        </div>
+        <div class="contact-block">
+          <div class="cb-icon">⏰</div>
+          <div class="cb-label">Hours</div>
+          <div class="cb-val">Mon–Sat: 9 AM – 7 PM<br>Sun: 10 AM – 2 PM</div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal rv2">
+      <div class="form-box">
+        <h3>Book Your Consultation</h3>
+        <p class="form-sub">Free 15-min discovery call available. No obligation.</p>
+        <div id="appt-form">
+          <div class="f-row">
+            <div class="f-grp">
+              <label for="fn">First Name</label>
+              <input type="text" id="fn" placeholder="john">
+            </div>
+            <div class="f-grp">
+              <label for="ln">Last Name</label>
+              <input type="text" id="ln" placeholder="dohn">
+            </div>
+          </div>
+          <div class="f-row">
+            <div class="f-grp">
+              <label for="em">Email</label>
+              <input type="email" id="em" placeholder="you@email.com">
+            </div>
+            <div class="f-grp">
+              <label for="ph">Phone</label>
+              <input type="tel" id="ph" placeholder="Number">
+            </div>
+          </div>
+          <div class="f-grp">
+            <label for="sv">Concern Area</label>
+            <select id="sv">
+              <option value="">Select your primary concern…</option>
+              <option>Gut Health & Microbiome</option>
+              <option>Metabolic Reset & Weight</option>
+              <option>Stress & Wellness</option>
+              <option>Autoimmune & Inflammation</option>
+              <option>Hormonal Imbalance</option>
+              <option>General Nutritional Assessment</option>
+            </select>
+          </div>
+          <div class="f-grp">
+            <label for="msg">Tell Us More (Optional)</label>
+            <textarea id="msg" placeholder="Briefly describe your health goals or current symptoms…"></textarea>
+          </div>
+          <button class="btn-submit" onclick="submitForm()">Request Consultation →</button>
+        </div>
+        <div class="form-success" id="form-success">
+          <div class="success-icon">🌿</div>
+          <h4>Thank you! We'll be in touch.</h4>
+          <p>Our team will reach out within 24 hours to confirm your appointment.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="logo">clear<span class="accent">lichen</span></a>
+      <p>Evidence-based nutritional medicine that addresses the root causes of disease. Because your plate is your most powerful prescription.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <a href="#">Gut & Microbiome</a>
+      <a href="#">Metabolic Reset</a>
+      <a href="#">Stress & Wellness</a>
+      <a href="#">Hormonal Balance</a>
+      <a href="#">Autoimmune Support</a>
+    </div>
+    <div class="footer-col">
+      <h4>About</h4>
+      <a href="#">Our Philosophy</a>
+      <a href="#">Our Team</a>
+      <a href="#">Research & Science</a>
+      <a href="#">Testimonials</a>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <a href="#">Book Appointment</a>
+      <a href="#">hello@clearlichen.com</a>
+      <a href="#">+1 (800) 927-3940</a>
+      <a href="#">New York, NY 10118, USA</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2026 clearlichen Health. All rights reserved.</p>
+    <p>Privacy Policy · Terms · Sitemap</p>
+  </div>
+</footer>
+
+<!-- ══ MODALS ══ -->
+
+<!-- GUT MODAL -->
+<div class="modal-overlay" id="modal-gut" onclick="closeOnBg(event,'gut')">
+  <div class="modal">
+    <img src="https://images.unsplash.com/photo-1509909756405-be0199881695?w=800&h=300&fit=crop&auto=format&q=85" class="modal-header-img" alt="Gut Health">
+    <div class="modal-header-overlay"></div>
+    <div class="modal-tag">Gut & Microbiome</div>
+    <button class="modal-close-btn" onclick="closeModal('gut')">✕</button>
+    <div class="modal-body-inner">
+      <h2>Gut & Microbiome Health</h2>
+      <div class="modal-subtitle">Microbiome Analysis · Leaky Gut · IBS · SIBO · Dysbiosis</div>
+      <p>Your gut houses 70% of your immune system and 95% of your serotonin. When the microbiome is disrupted, the effects ripple through every system — from mood to metabolism to immunity.</p>
+      <div class="modal-sci-box">
+        <h4>🦠 The Gut-Brain-Immune Axis</h4>
+        <p>The gut microbiome communicates with the brain via the vagus nerve, producing over 30 neurotransmitters and directly modulating immune responses. Our 3-phase gut restoration protocol uses specific probiotic strains, prebiotic foods, and intestinal repair nutrients to rebuild a resilient microbiome from the inside out.</p>
+      </div>
+      <div class="modal-pills">
+        <span class="m-pill green">Comprehensive Stool Analysis</span>
+        <span class="m-pill green">SIBO Breath Test</span>
+        <span class="m-pill warm">Intestinal Permeability</span>
+        <span class="m-pill warm">Food Sensitivity Panel</span>
+        <span class="m-pill gold">Microbiome Mapping</span>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-food-grid">
+        <div class="m-food-card"><h5>🥦 Cruciferous Vegetables</h5><p>Glucosinolates feed Akkermansia muciniphila — the bacterium that strengthens gut barrier integrity, reducing leaky gut by up to 40%.</p></div>
+        <div class="m-food-card"><h5>🫙 Fermented Foods</h5><p>Lactobacillus species in yogurt & kimchi produce lactic acid, lowering gut pH and suppressing harmful pathogens while boosting immune tolerance.</p></div>
+        <div class="m-food-card"><h5>🧄 Prebiotic Fiber</h5><p>Inulin, FOS, and resistant starch selectively feed beneficial bacteria, increasing SCFA production (butyrate) for colonocyte fuel and reduced inflammation.</p></div>
+        <div class="m-food-card"><h5>🫐 Polyphenol-Rich Berries</h5><p>Anthocyanins act as prebiotics, shifting microbiome diversity toward anti-inflammatory species with measurable improvements in as little as 4 weeks.</p></div>
+      </div>
+      <div class="modal-stats">
+        <div class="m-stat-box"><div class="m-stat-num">70%</div><div class="m-stat-lbl">Of the immune system is housed in the gut wall</div></div>
+        <div class="m-stat-box"><div class="m-stat-num">38T</div><div class="m-stat-lbl">Bacterial cells in your gut microbiome</div></div>
+        <div class="m-stat-box"><div class="m-stat-num">95%</div><div class="m-stat-lbl">Of serotonin produced in the gut, not the brain</div></div>
+      </div>
+      <a href="#appointment" class="btn-primary" onclick="closeModal('gut')" style="display:inline-flex">Begin Gut Restoration →</a>
+    </div>
+  </div>
+</div>
+
+<!-- WEIGHT MODAL -->
+<div class="modal-overlay" id="modal-weight" onclick="closeOnBg(event,'weight')">
+  <div class="modal">
+    <img src="https://c02.purpledshub.com/uploads/sites/41/2024/05/Time-restricted-eating-high-intensity-exercise.jpg" class="modal-header-img" alt="Metabolic Reset">
+    <div class="modal-header-overlay"></div>
+    <div class="modal-tag">Metabolic Reset</div>
+    <button class="modal-close-btn" onclick="closeModal('weight')">✕</button>
+    <div class="modal-body-inner">
+      <h2>Metabolic Reset Program</h2>
+      <div class="modal-subtitle">Insulin Resistance · Hormonal Weight · PCOS · Thyroid · Metabolic Syndrome</div>
+      <p>Sustainable weight management requires understanding your unique metabolic blueprint. We go beyond calories to address insulin signalling, hormonal balance, and the metabolic root causes of weight gain.</p>
+      <div class="modal-sci-box">
+        <h4>⚡ The Insulin-Fat Storage Loop</h4>
+        <p>Chronically elevated insulin (driven by refined carbohydrates and seed oils) locks fat cells in storage mode, making weight loss nearly impossible despite caloric restriction. Our metabolic reset protocol focuses on insulin sensitization through timed nutrition, specific food compounds, and targeted movement protocols.</p>
+      </div>
+      <div class="modal-pills">
+        <span class="m-pill warm">Fasting Insulin Panel</span>
+        <span class="m-pill warm">Comprehensive Thyroid</span>
+        <span class="m-pill green">HOMA-IR Calculation</span>
+        <span class="m-pill gold">Metabolic Rate Testing</span>
+        <span class="m-pill green">Hormone Panel</span>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-food-grid">
+        <div class="m-food-card"><h5>🥩 Lean Protein</h5><p>The thermic effect of protein is 20–30% vs 3–8% for carbs. It increases GLP-1 and PYY satiety hormones by up to 60%, reducing hunger naturally.</p></div>
+        <div class="m-food-card"><h5>🍏 Apple Cider Vinegar</h5><p>Acetic acid activates AMPK — the cellular energy sensor that mimics caloric restriction effects at the molecular signalling level.</p></div>
+        <div class="m-food-card"><h5>🌶️ Capsaicin</h5><p>Activates TRPV1 receptors, increasing UCP1 expression in brown adipose tissue and converting stored fat directly to heat energy.</p></div>
+        <div class="m-food-card"><h5>🫐 Berberine-Rich Foods</h5><p>Berberine activates AMPK with efficacy comparable to metformin in clinical trials, improving insulin sensitivity and lipid metabolism safely.</p></div>
+      </div>
+      <div class="modal-stats">
+        <div class="m-stat-box"><div class="m-stat-num">30%</div><div class="m-stat-lbl">Insulin reduction with dietary protocol in 8 weeks</div></div>
+        <div class="m-stat-box"><div class="m-stat-num">60%</div><div class="m-stat-lbl">Satiety hormone increase with high-protein meals</div></div>
+        <div class="m-stat-box"><div class="m-stat-num">90%</div><div class="m-stat-lbl">Long-term success with metabolic root-cause approach</div></div>
+      </div>
+      <a href="#appointment" class="btn-primary" onclick="closeModal('weight')" style="display:inline-flex">Start Metabolic Reset →</a>
+    </div>
+  </div>
+</div>
+
+<!-- WELLNESS MODAL -->
+<div class="modal-overlay" id="modal-wellness" onclick="closeOnBg(event,'wellness')">
+  <div class="modal">
+    <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&h=300&fit=crop&auto=format&q=85" class="modal-header-img" alt="Wellness">
+    <div class="modal-header-overlay"></div>
+    <div class="modal-tag">Integrative Wellness</div>
+    <button class="modal-close-btn" onclick="closeModal('wellness')">✕</button>
+    <div class="modal-body-inner">
+      <h2>Stress & Wellness Program</h2>
+      <div class="modal-subtitle">HPA Axis · Cortisol Rhythms · Nutritional Psychiatry · Adaptogens</div>
+      <p>Stress is not just psychological — it's deeply physiological. Chronic HPA axis dysregulation depletes key nutrients, disrupts sleep architecture, impairs digestion, and accelerates biological aging.</p>
+      <div class="modal-sci-box">
+        <h4>🧠 The Cortisol–Nutrition Feedback Loop</h4>
+        <p>Chronic cortisol elevation depletes magnesium (50mg lost per acute stress event), Vitamin C (highest concentration in the body is in the adrenal glands), and B vitamins. This creates a vicious cycle — stress depletes nutrients, which amplifies stress response. Targeted repletion breaks the cycle from the inside out.</p>
+      </div>
+      <div class="modal-pills">
+        <span class="m-pill green">Cortisol 4-Point Saliva Test</span>
+        <span class="m-pill green">Magnesium RBC</span>
+        <span class="m-pill gold">GABA / Serotonin Precursors</span>
+        <span class="m-pill warm">Adaptogenic Protocol</span>
+        <span class="m-pill warm">Sleep Architecture Analysis</span>
+      </div>
+      <div class="modal-divider"></div>
+      <div class="modal-food-grid">
+        <div class="m-food-card"><h5>🍫 Dark Chocolate</h5><p>Theobromine and flavanols increase BDNF and reduce cortisol. Magnesium content supports GABA receptor function for natural calm.</p></div>
+        <div class="m-food-card"><h5>🫖 Ashwagandha</h5><p>Withanolides modulate the HPA axis, reducing cortisol by 27.9% in randomized clinical trials. A classically used adaptogen with modern validation.</p></div>
+        <div class="m-food-card"><h5>🥜 Pumpkin Seeds</h5><p>Tryptophan, zinc, and magnesium — the trifecta for serotonin synthesis and its conversion to melatonin for truly restorative sleep.</p></div>
+        <div class="m-food-card"><h5>🫐 Wild Blueberries</h5><p>Anthocyanins cross the blood-brain barrier, increasing BDNF and protecting hippocampal neurons from cortisol-induced neuronal atrophy.</p></div>
+      </div>
+      <div class="modal-stats">
+        <div class="m-stat-box"><div class="m-stat-num">28%</div><div class="m-stat-lbl">Cortisol reduction with ashwagandha protocol (RCT)</div></div>
+        <div class="m-stat-box"><div class="m-stat-num">50mg</div><div class="m-stat-lbl">Magnesium lost per acute stress event</div></div>
+        <div class="m-stat-box"><div class="m-stat-num">95%</div><div class="m-stat-lbl">Of serotonin produced in the gut, not the brain</div></div>
+      </div>
+      <a href="#appointment" class="btn-primary" onclick="closeModal('wellness')" style="display:inline-flex">Start Wellness Program →</a>
+    </div>
+  </div>
+</div>
+
+<script>
+// NAV
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// REVEAL
+const revEls = document.querySelectorAll('.reveal');
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+revEls.forEach(el => revObs.observe(el));
+
+// COUNTERS
+function animCount(el, target, suffix) {
+  let c = 0, step = target / 70;
+  const t = setInterval(() => {
+    c += step;
+    if (c >= target) { c = target; clearInterval(t); }
+    el.textContent = Math.floor(c) + suffix;
+  }, 20);
+}
+const statObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting && !e.target.dataset.done) {
+      e.target.dataset.done = '1';
+      const raw = e.target.dataset.count;
+      const suffix = e.target.textContent.replace(/\d+/, '').replace('0', '');
+      animCount(e.target, +raw, suffix);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-count]').forEach(el => statObs.observe(el));
+
+// NUTRIENT BARS
+const barObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      document.querySelectorAll('.nut-fill').forEach(b => {
+        b.style.width = b.dataset.w;
+      });
+    }
+  });
+}, { threshold: 0.3 });
+const barSection = document.querySelector('.nut-bars');
+if (barSection) barObs.observe(barSection);
+
+// MODALS
+function openModal(id) {
+  document.getElementById('modal-' + id).classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+  document.getElementById('modal-' + id).classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeOnBg(e, id) {
+  if (e.target === document.getElementById('modal-' + id)) closeModal(id);
+}
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal-overlay.open').forEach(m => {
+      m.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  }
+});
+
+// FORM
+function submitForm() {
+  const fn = document.getElementById('fn').value.trim();
+  const em = document.getElementById('em').value.trim();
+  const sv = document.getElementById('sv').value;
+  if (!fn || !em || !sv) {
+    alert('Please fill in your name, email, and concern area.');
+    return;
+  }
+  document.getElementById('appt-form').style.display = 'none';
+  document.getElementById('form-success').style.display = 'block';
+}
+</script>
+</body>
+</html>
